@@ -10,12 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { ListClientesComponent } from './components/list-clientes/list-clientes.component';
+import { FormClientesComponent } from './components/form-clientes/form-clientes.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListClientesComponent
+    ListClientesComponent,
+    FormClientesComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
