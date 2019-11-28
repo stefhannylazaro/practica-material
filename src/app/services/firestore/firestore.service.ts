@@ -22,4 +22,7 @@ export class FirestoreService {
     return this.firestore.collection('cliente').doc(id).delete();
   }
 
+  public createCliente(data) {
+    return this.firestore.collection('cliente').add(data);
+  }
 }

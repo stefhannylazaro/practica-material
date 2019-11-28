@@ -1,12 +1,18 @@
 <div class="example-container">
-    <mat-form-field>
-        <input matInput placeholder="Nombre">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Email">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Order">
-    </mat-form-field>
-    <button mat-flat-button color="primary">Guardar</button>
+    <form [formGroup]="formClient" (ngSubmit)="onSubmit(formClient.value)" class="form">
+        <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="formClient.get('email').invalid && formClient.get('email').touched">
+                Campo no permitido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Order" formControlName="order">
+        </mat-form-field>
+        <button type="submit" mat-flat-button color="primary" [disabled]="formClient.invalid">
+            Guardar</button>
+    </form>
 </div>
