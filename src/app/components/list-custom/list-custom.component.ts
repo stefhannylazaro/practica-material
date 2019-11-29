@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-
+import {FirestoreService} from '../../services/firestore/firestore.service';
 export interface PeriodicElement {
   name: string;
   position: number;
