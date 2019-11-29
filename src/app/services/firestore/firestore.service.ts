@@ -10,7 +10,7 @@ export class FirestoreService {
     private _angularFirestore:AngularFirestore
   ) { }
 
-  listClients(){
+  listClients():Observable<any>{
     return this._angularFirestore.collection('cliente').snapshotChanges();
   }
   getClient(id:string){

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {FirestoreService} from '../../services/firestore/firestore.service';
+import {ClienteI} from '../../models/cliente';
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -28,11 +30,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ListCustomComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource();
+  public listClient:Array<ClienteI>;
 
-  constructor() { }
+  constructor(
+    private _firestoreService:FirestoreService
+  ) {
+    this.listClient=[];
+  }
 
   ngOnInit() {
+    console.log("init");
+    this._firestoreService.listClients().subscribe(
+      (result)=>{
+        console.log(result);
+        result.forEach((element)=>{
+          this.listClient.push({
+            id:element.payload.doc.id,
+            email:element.payload.doc.data().email,
+            name:element.payload.doc.data().name,
+            order:element.payload.doc.data().order
+          })
+        });
+        console.log(this.listClient);
+      }
+    );
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
