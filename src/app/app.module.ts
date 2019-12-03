@@ -13,6 +13,7 @@ import { MaterialModule } from './material/material.module';
 import { ListClientesComponent } from './components/list-clientes/list-clientes.component';
 import { FormClientesComponent } from './components/form-clientes/form-clientes.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     AppComponent,
     ListClientesComponent,
     FormClientesComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

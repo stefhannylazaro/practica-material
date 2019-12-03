@@ -33,6 +33,7 @@ export class ListClientesComponent implements OnInit,DoCheck {
   ngOnInit() {
     this._firestoreService.getClientes().subscribe(
       (result)=>{
+        this.listClientes=[];//clean data
         result.forEach(element => {
           this.listClientes.push({
             id:element.payload.doc.id,
@@ -51,14 +52,12 @@ export class ListClientesComponent implements OnInit,DoCheck {
   }
 
   editC(element){
-    console.log(element);
-    
-
+    this._firestoreService.selected=element;
+    this._firestoreService.load=true;
   }
   deleteC(id){
     this._firestoreService.deleteCliente(id).then(() => {
       console.log('Documento eliminado!');
-      //actualizar data de la tabla
     }, (error) => {
       console.error(error);
     });

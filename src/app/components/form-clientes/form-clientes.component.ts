@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterViewChecked } from '@angular/core';
 import {ClienteI} from '../../models/cliente.interface';
 import { FirestoreService } from '../../services/firestore/firestore.service';
 import { FormGroup, FormControl , Validators} from '@angular/forms';
@@ -8,8 +8,9 @@ import { FormGroup, FormControl , Validators} from '@angular/forms';
   templateUrl: './form-clientes.component.html',
   styleUrls: ['./form-clientes.component.css']
 })
-export class FormClientesComponent implements OnInit {
+export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
   public formClient = new FormGroup({
+      id: new FormControl(null),
       name: new FormControl('',Validators.required),
       order: new FormControl('',Validators.required),
       email: new FormControl('',[
@@ -19,21 +20,35 @@ export class FormClientesComponent implements OnInit {
   });
   constructor(
     private  _firestoreService: FirestoreService 
-  ) { }
-
+  ) {
+  }
   ngOnInit() {
+    this.formClient.setValue(this._firestoreService.selected);
+  }
+  ngDoCheck(){
+    console.log("docheck form"); 
+    console.log(this.formClient.value);
+    console.log(this._firestoreService.selected);
+    console.log(this.formClient.value);
+  }
+  ngAfterViewChecked(){
+    console.log("AfterViewChecked");
+    
   }
   onSubmit(form){
     console.log(form);
-    this. _firestoreService.createCliente(form).then(() => {
-      console.log('Documento creado exitósamente!');
-      this.formClient.setValue({
-        name: '',
-        order: '',
-        email: ''
+    if(this.formClient.value.id===""){//crear
+      this. _firestoreService.createCliente(form).then(() => {
+        console.log('Documento creado exitósamente!');
+      }, (error) => {
+        console.error(error);
       });
-    }, (error) => {
-      console.error(error);
-    });
+    } else {
+      console.log('editar');
+    }
+  }
+
+  exit(){
+    this._firestoreService.load=false;
   }
 }

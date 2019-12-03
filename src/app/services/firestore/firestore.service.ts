@@ -6,7 +6,13 @@ import { Observable } from 'rxjs';//add
   providedIn: 'root'
 })
 export class FirestoreService {
-
+  public selected={
+    id:'',
+    name:'',
+    order:'',
+    email:''
+  }
+  public load:boolean=false;
   constructor(private firestore:AngularFirestore) {
   }
   public getClientes():Observable<any>{
