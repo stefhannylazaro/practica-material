@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';//add
+import {ClienteI} from '../../models/cliente.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-  public selected={
-    id:'',
+  public selected:ClienteI={
+    id:null,
     name:'',
-    order:'',
-    email:''
+    email:'',
+    order:''
   }
   public load:boolean=false;
   constructor(private firestore:AngularFirestore) {

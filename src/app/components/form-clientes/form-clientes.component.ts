@@ -37,7 +37,7 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
   }
   onSubmit(form){
     console.log(form);
-    if(this.formClient.value.id===""){//crear
+    if(this.formClient.value.id==="" || this.formClient.value.id===null){//crear
       this. _firestoreService.createCliente(form).then(() => {
         console.log('Documento creado exitósamente!');
       }, (error) => {
@@ -45,10 +45,12 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
       });
     } else {
       console.log('editar');
+      this._firestoreService.editCliente(this.formClient.value);
     }
   }
 
   exit(){
     this._firestoreService.load=false;
+    //limpiar formulario
   }
 }
