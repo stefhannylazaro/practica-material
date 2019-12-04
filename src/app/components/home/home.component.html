@@ -1,4 +1,4 @@
-<button type="button" mat-flat-button color="primary" (click)="ver()">Agregar</button>
 <app-toolbar></app-toolbar>
-<app-list-clientes></app-list-clientes>
+<button type="button" mat-flat-button color="primary" (click)="ver()">Agregar</button>
+<app-list-clientes *ngIf="!_firestoreService.load"></app-list-clientes>
 <app-form-clientes *ngIf="_firestoreService.load"></app-form-clientes>

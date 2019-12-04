@@ -40,17 +40,24 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
     if(this.formClient.value.id==="" || this.formClient.value.id===null){//crear
       this. _firestoreService.createCliente(form).then(() => {
         console.log('Documento creado exitósamente!');
+        this.exit();
       }, (error) => {
         console.error(error);
       });
     } else {
       console.log('editar');
-      this._firestoreService.editCliente(this.formClient.value);
+      this._firestoreService.editCliente(this.formClient.value).then(
+        ()=>{
+          this.exit();
+        }, (error)=>{
+        }
+      );
     }
   }
 
   exit(){
+    this.formClient.setValue({id:null,name: '', email: '',order:''});
+    this._firestoreService.selected=this.formClient.value;
     this._firestoreService.load=false;
-    //limpiar formulario
   }
 }
