@@ -1,18 +1,19 @@
 <div class="example-container">
-    <form [formGroup]="formClient">
+    <form [formGroup]="formClient" (ngSubmit)="onSubmit(formClient.value)">
         <mat-form-field class="item">
             <input matInput placeholder="nombre" formControlName="name">
         </mat-form-field>
     
         <mat-form-field>
             <input matInput placeholder="correo@gmail.com" formControlName="email">
+            <mat-error *ngIf="formClient.get('email').invalid && formClient.get('email').touched">No válido</mat-error>
         </mat-form-field>
     
         <mat-form-field>
             <input matInput placeholder="order" formControlName="order">
         </mat-form-field>
         <div>
-            <button mat-raised-button color="primary">Aceptar</button>
+            <button mat-raised-button color="submit" [disabled]="formClient.invalid">Aceptar</button>
             <button mat-raised-button color="warn">Cancelar</button>
         </div>
     </form>

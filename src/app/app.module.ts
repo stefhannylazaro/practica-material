@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ListCustomComponent } from './components/list-custom/list-custom.component';
 import { FormCustomComponent } from './components/form-custom/form-custom.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -21,7 +22,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     AppComponent,
     ListCustomComponent,
     FormCustomComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

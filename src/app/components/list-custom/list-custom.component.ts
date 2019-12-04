@@ -43,6 +43,7 @@ export class ListCustomComponent implements OnInit {
     console.log("init");
     this._firestoreService.listClients().subscribe(
       (result)=>{
+        this.listClient=[];
         console.log(result);
         result.forEach((element)=>{
           this.listClient.push({
@@ -56,10 +57,18 @@ export class ListCustomComponent implements OnInit {
         this.dataSource.data=this.listClient;
       }
     );
-   
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  deleteC(id:string){
+    console.log("delete");
+    this._firestoreService.deleteClient(id);
+  }
+  editC(data){
+    console.log(data);
+    this._firestoreService.selectedClient=data;//carga data a la propiedad selected en service
+    //=data;
   }
 
 }
