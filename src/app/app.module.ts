@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +13,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ListCustomComponent } from './components/list-custom/list-custom.component';
 import { FormCustomComponent } from './components/form-custom/form-custom.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
