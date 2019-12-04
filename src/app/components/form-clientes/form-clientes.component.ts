@@ -26,7 +26,7 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
     this.formClient.setValue(this._firestoreService.selected);
   }
   getErrorMessageEmail() {
-    return this.formClient.get('email').hasError('required') ? 'Email requqrido' :
+    return this.formClient.get('email').hasError('required') ? 'Email requerido' :
             this.formClient.get('email').hasError('email') ? 'Formato email incorrecto' :
             '';
   }
@@ -46,15 +46,13 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
       this. _firestoreService.createCliente(form).then(() => {
         console.log('Documento creado exitósamente!');
         this.exit();
-      }, (error) => {
-        console.error(error);
+      }).catch((error)=>{
+        console.log(error);
       });
-    } else {
-      console.log('editar');
+    } else {//editar
       this._firestoreService.editCliente(this.formClient.value).then(
         ()=>{
           this.exit();
-        }, (error)=>{
         }
       );
     }

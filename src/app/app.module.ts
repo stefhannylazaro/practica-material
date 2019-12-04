@@ -14,7 +14,7 @@ import { ListClientesComponent } from './components/list-clientes/list-clientes.
 import { FormClientesComponent } from './components/form-clientes/form-clientes.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { HomeComponent } from './components/home/home.component';
     // MatCardModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

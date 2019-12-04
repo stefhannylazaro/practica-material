@@ -2,3 +2,12 @@
 <button type="button" mat-flat-button color="primary" (click)="ver()">Agregar</button>
 <app-list-clientes *ngIf="!_firestoreService.load"></app-list-clientes>
 <app-form-clientes *ngIf="_firestoreService.load"></app-form-clientes>
+
+<div class="content" fxLayout="row" fxLayout.xs="column" >
+    <div fxFlex="50">
+              1
+    </div>
+    <div fxFlex="50">
+              2
+    </div>
+</div>
