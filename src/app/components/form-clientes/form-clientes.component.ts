@@ -25,6 +25,11 @@ export class FormClientesComponent implements OnInit,DoCheck, AfterViewChecked {
   ngOnInit() {
     this.formClient.setValue(this._firestoreService.selected);
   }
+  getErrorMessageEmail() {
+    return this.formClient.get('email').hasError('required') ? 'Email requqrido' :
+            this.formClient.get('email').hasError('email') ? 'Formato email incorrecto' :
+            '';
+  }
   ngDoCheck(){
     console.log("docheck form"); 
     console.log(this.formClient.value);
