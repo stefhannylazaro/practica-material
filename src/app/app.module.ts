@@ -15,14 +15,17 @@ import { FormClientesComponent } from './components/form-clientes/form-clientes.
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ExtraComponent } from './components/extra/extra.component';
+import { addNumberPipe } from './pipes/add-number.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     ListClientesComponent,
     FormClientesComponent,
     ToolbarComponent,
-    HomeComponent
+    HomeComponent,
+    ExtraComponent,
+    addNumberPipe
   ],
   imports: [
     BrowserModule,
