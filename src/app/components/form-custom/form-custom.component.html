@@ -6,7 +6,9 @@
     
         <mat-form-field>
             <input matInput placeholder="correo@gmail.com" formControlName="email">
-            <mat-error *ngIf="formClient.get('email').invalid && formClient.get('email').touched">No válido</mat-error>
+            <mat-error *ngIf="formClient.get('email').invalid && formClient.get('email').touched">
+               {{getErrorsEmail()}}
+            </mat-error>
         </mat-form-field>
     
         <mat-form-field>
@@ -14,7 +16,7 @@
         </mat-form-field>
         <div>
             <button mat-raised-button color="submit" [disabled]="formClient.invalid">Aceptar</button>
-            <button mat-raised-button color="warn">Cancelar</button>
+            <button mat-raised-button color="warn" (click)="cancel()">Cancelar</button>
         </div>
     </form>
 </div>

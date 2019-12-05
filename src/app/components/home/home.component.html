@@ -1,3 +1,4 @@
-<app-toolbar></app-toolbar>
-<app-list-custom></app-list-custom>
-<app-form-custom></app-form-custom>
+<app-toolbar></app-toolbar><br>
+<button mat-raised-button (click)="showForm()" *ngIf="!_firestoreService.loadForm">Agregar</button><br>
+<app-list-custom  *ngIf="!_firestoreService.loadForm"></app-list-custom>
+<app-form-custom *ngIf="_firestoreService.loadForm"></app-form-custom>

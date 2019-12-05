@@ -7,11 +7,12 @@ import {ClienteI} from '../../models/cliente'
 })
 export class FirestoreService {
   public selectedClient:ClienteI={
-    id:'',
+    id:null,
     email:'',
     name:'',
     order:''
   };
+  public loadForm:boolean=false;
   constructor(
     private _angularFirestore:AngularFirestore
   ) { }
@@ -27,5 +28,8 @@ export class FirestoreService {
   }
   addClient(data){
     return this._angularFirestore.collection('cliente').add(data);
+  }
+  editClient(data){
+    return this._angularFirestore.collection('cliente').doc(data.id).set(data);
   }
 }

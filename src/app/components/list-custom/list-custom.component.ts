@@ -66,9 +66,10 @@ export class ListCustomComponent implements OnInit {
     this._firestoreService.deleteClient(id);
   }
   editC(data){
-    console.log(data);
+    //console.log(data);
     this._firestoreService.selectedClient=data;//carga data a la propiedad selected en service
-    //=data;
+    this._firestoreService.loadForm=true;//actualizo el servicio
+    //console.log(this._firestoreService.selectedClient);
   }
 
 }
